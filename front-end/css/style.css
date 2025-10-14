@@ -172,34 +172,34 @@ section.especialidades .flex {
     margin: 15px 0;
 }
 
-/* ESTILO SOBRE */
+/* ESTILO galeria */
 
-section.sobre {
+section.galeria {
     padding: 80px 4%;
     box-shadow: 0 0 40px 10px #ffffff0a;
 }
 
-section.sobre .flex {
+section.galeria .flex {
     align-items: center;
     gap: 60px;
 }
 
-.sobre .txt-sobre {
+.galeria .txt-galeria {
     color: #fff;
 }
 
-.sobre .txt-sobre h2 {
+.galeria .txt-galeria h2 {
     font-size: 30px;
     line-height: 40px;
     margin-bottom: 30px;
 }
 
-.sobre .txt-sobre h2 span {
+.galeria .txt-galeria h2 span {
     color: rgb(0, 158, 16);;
     display: block;
 }
 
-.sobre .txt-sobre p {
+.galeria .txt-galeria p {
     margin: 20px 0;
     text-align: justify;
 }
@@ -216,19 +216,19 @@ section.sobre .flex {
     transition: .2s;
 }
 
-.img-sobre img {
+.img-galeria img {
     width: 300px;
     border-radius: 50px;
 }
 
-/* sobre */
+/* galeria */
 
-section.sobre {
+section.galeria {
     padding: 80px 4%;
     box-shadow: 0 0 40px 10px #ffffff0a;
 } 
  
-section.sobre .flex {
+section.galeria .flex {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
@@ -339,8 +339,8 @@ footer .btn-social {
 @media (max-width: 1024px) {
     section.topo-site .flex,
     section.especialidades .flex,
-    section.sobre .flex,
-    section.sobre .flex {
+    section.galeria .flex,
+    section.galeria .flex {
         flex-direction: column;
         text-align: center;
     }
@@ -350,7 +350,7 @@ footer .btn-social {
     }
 
     .img-topo-site img,
-    .img-sobre img {
+    .img-galeria img {
         width: 250px;
     }
 }

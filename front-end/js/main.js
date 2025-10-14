@@ -26,7 +26,7 @@ function initPage() {
     loadHTML('header', 'header.html');
     loadHTML('topo', 'section-topo.html');
     loadHTML('evento', 'section-evento.html');
-    loadHTML('sobre', 'section-sobre.html');
+    loadHTML('galeria', 'section-galeria.html');
     loadHTML('footer', 'footer.html');
 
     document.addEventListener('click', (e) => {
