@@ -21,17 +21,6 @@ body {
     display: flex;
 }
 
-.btn-contato button {
-    padding: 10px 40px;
-    font-size: 18px;
-    font-weight: 700;
-    border: 0;
-    border-radius: 30px;
-    cursor: pointer;
-    background-color: rgb(0, 158, 16);;
-    transition: .2s;
-}
-
 h2.titulo {
     color: #fff;
     font-size: 38px;
@@ -380,12 +369,7 @@ footer .btn-social {
         margin: 20px 0;
         text-align: center;
     }
-
-    .btn-contato button {
-        padding: 8px 25px;
-        font-size: 16px;
-    }
-
+    
     footer .flex {
         flex-direction: column;
         gap: 20px;
@@ -439,10 +423,4 @@ footer .btn-social {
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .btn-contato,
-        .btn-contraste {
-            display: inline-block;
-            margin-left: 10px;
         }
