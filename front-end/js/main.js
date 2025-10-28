@@ -26,8 +26,9 @@ function initPage() {
     loadHTML('header', 'header.html');
     loadHTML('topo', 'section-topo.html');
     loadHTML('evento', 'section-evento.html');
-    loadHTML('galeria', 'section-galeria.html');
+    loadHTML('horario', 'section-horarios.html');
     loadHTML('footer', 'footer.html');
+
 
     document.addEventListener('click', (e) => {
         if (e.target.closest('#toggle-contraste')) {

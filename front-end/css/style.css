@@ -121,7 +121,84 @@ section.topo-site .flex {
     }
 }
 
+.horario-atendimento {
+    background: #000000;
+    padding: 50px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.horario-atendimento .titulo {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.horario-atendimento .flex {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.horario-box {
+    background: #171717; /* card escuro */
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 200px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #fff;
+}
+
+.horario-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(255,255,255,0.2);
+}
+
+.horario-box h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.horario-box p {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+
 /* ESPECIALIDADES */
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background: #000000;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 15px;
+    max-width: 250px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card  p {
+    color: white;
+}
+
 
 section.especialidades {
     padding: 40px 4%;
@@ -322,7 +399,6 @@ footer .btn-social {
         gap: 20px;
     }
 }
-
 
 /* Para tablets */
 @media (max-width: 1024px) {
