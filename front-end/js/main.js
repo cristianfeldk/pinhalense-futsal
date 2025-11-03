@@ -26,6 +26,7 @@ function initPage() {
     loadHTML('header', 'header.html');
     loadHTML('topo', 'section-topo.html');
     loadHTML('evento', 'section-evento.html');
+    loadHTML('faq', 'section-faq.html');
     loadHTML('horario', 'section-horarios.html');
     loadHTML('footer', 'footer.html');
 

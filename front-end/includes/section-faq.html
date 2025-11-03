@@ -1,19 +1,113 @@
-<section class="horario-atendimento" id="horario">
-    <div class="interface">
-        <h2 class="titulo">Perguntas frequentes<span>.</span></h2>
-        <div class="flex">
-            <div class="horario-box">
-                <h3>Segunda a Sexta</h3>
-                <p>08:00 - 18:00</p>
-            </div>
-            <div class="horario-box">
-                <h3>Sábado</h3>
-                <p>08:00 - 12:00</p>
-            </div>
-            <div class="horario-box">
-                <h3>Domingo</h3>
-                <p>Fechado</p>
-            </div>
-        </div>
+<section class="faq">
+  <h2 class="faq-title">Perguntas frequentes</h2>
+
+  <div class="faq-item active">
+    <button class="faq-question">O que é a APEB?</button>
+    <div class="faq-answer">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab architecto repudiandae pariatur id quos, labore sapiente laboriosam. Ratione nemo sequi quae, repellat qui hic eius doloribus ad nisi ut. Placeat.
+      </p>
     </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      Qual a idade mínima para fazer aulas de futsal na APEB?
+    </button>
+    <div class="faq-answer">
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, dignissimos voluptate. Obcaecati unde repellat consequatur rerum quaerat ratione, quod et nisi. Blanditiis, sit sunt unde eos molestias tempore laborum magnam?</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Como faço minha inscrição para as aulas?</button>
+    <div class="faq-answer">
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam expedita fugiat ea hic, saepe temporibus debitis, asperiores corrupti nemo adipisci est voluptate quasi quibusdam doloribus autem incidunt at! Nobis, totam?</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Existem algum custo para participar?</button>
+    <div class="faq-answer">
+      <p>As aulas são gratuitas, com apoio de parceiros e patrocinadores locais.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      Quais as categorias de futsal atendidas pela APEB?
+    </button>
+    <div class="faq-answer">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum adipisci, quasi explicabo, quibusdam asperiores velit, molestias ipsum quia inventore et aspernatur iusto. Modi asperiores dolore similique animi sit illo eveniet?</p>
+    </div>
+  </div>
 </section>
+
+<style>
+.faq {
+  max-width: 900px;
+  margin: 60px auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: rgb(255, 255, 255);
+  margin-bottom: 1.5rem;
+}
+
+.faq-item {
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 18px 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgb(0, 158, 16);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.faq-question:hover {
+  background: #e6f7ff;
+}
+
+.faq-answer {
+  display: none;
+  padding: 15px 20px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.faq-item.active .faq-question::before {
+  content: "– ";
+}
+
+.faq-item:not(.active) .faq-question::before {
+  content: "+ ";
+}
+</style>
+
+<script>
+document.querySelectorAll(".faq-question").forEach((button) => {
+  button.addEventListener("click", () => {
+    const faqItem = button.parentElement;
+    faqItem.classList.toggle("active");
+  });
+});
+</script>
