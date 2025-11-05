@@ -12,6 +12,11 @@ function loadHTML(id, file) {
         try {
             const content = iframe.contentDocument.body.innerHTML;
             el.innerHTML = content;
+            
+            // Se carregou o FAQ, inicializa a funcionalidade
+            if (file === 'section-faq.html') {
+                setTimeout(initFAQ, 50); // Pequeno delay para garantir que o DOM foi atualizado
+            }
         } catch (err) {
             el.innerHTML = `<p style="color:red;">Erro ao carregar ${file}</p>`;
         } finally {
@@ -20,6 +25,23 @@ function loadHTML(id, file) {
     };
 
     document.body.appendChild(iframe);
+}
+
+// Função para inicializar a funcionalidade do FAQ
+function initFAQ() {
+    const q = document.querySelectorAll(".q");
+    const a = document.querySelectorAll(".a");
+    const arr = document.querySelectorAll(".arrow");
+
+    console.log("FAQ inicializado - elementos encontrados:", q.length, a.length, arr.length);
+
+    for(let i = 0; i < q.length; i++) {
+        q[i].addEventListener("click", () => {
+            console.log("Clique na pergunta", i);
+            a[i].classList.toggle("a-opened");
+            arr[i].classList.toggle("arrow-rotated");
+        });
+    }
 }
 
 function initPage() {

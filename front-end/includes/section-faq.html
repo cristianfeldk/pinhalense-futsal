@@ -1,122 +1,110 @@
-<section class="faq">
-  <h2 class="faq-title">Perguntas frequentes</h2>
-
-  <div class="faq-item active">
-    <button class="faq-question">O que é a APEB?</button>
-    <div class="faq-answer">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab architecto repudiandae pariatur id quos, labore sapiente laboriosam. Ratione nemo sequi quae, repellat qui hic eius doloribus ad nisi ut. Placeat.
-      </p>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question">
-      Qual a idade mínima para fazer aulas de futsal na APEB?
-    </button>
-    <div class="faq-answer">
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, dignissimos voluptate. Obcaecati unde repellat consequatur rerum quaerat ratione, quod et nisi. Blanditiis, sit sunt unde eos molestias tempore laborum magnam?</p>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question">Como faço minha inscrição para as aulas?</button>
-    <div class="faq-answer">
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam expedita fugiat ea hic, saepe temporibus debitis, asperiores corrupti nemo adipisci est voluptate quasi quibusdam doloribus autem incidunt at! Nobis, totam?</p>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question">Existem algum custo para participar?</button>
-    <div class="faq-answer">
-      <p>As aulas são gratuitas, com apoio de parceiros e patrocinadores locais.</p>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question">
-      Quais as categorias de futsal atendidas pela APEB?
-    </button>
-    <div class="faq-answer">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum adipisci, quasi explicabo, quibusdam asperiores velit, molestias ipsum quia inventore et aspernatur iusto. Modi asperiores dolore similique animi sit illo eveniet?</p>
-    </div>
-  </div>
+<section class="faq-section">
+  <h1 class="title">perguntas frequentes</h1>
+  <ul class="faq">
+    <li>
+      <div class="q">
+        <span class="arrow"></span>
+        <span>O que é apeb?</span>
+      </div>
+      <div class="a">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero ullam iure non vero, eligendi eveniet aliquam sit sint perspiciatis numquam ut cumque tenetur commodi aspernatur expedita hic ad quam. Reprehenderit?</p>
+      </div>
+    </li>
+  </ul>
 </section>
 
 <style>
-.faq {
-  max-width: 900px;
-  margin: 60px auto;
-  font-family: "Poppins", sans-serif;
-}
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
 
-.faq-title {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: rgb(255, 255, 255);
-  margin-bottom: 1.5rem;
-}
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-.faq-item {
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  background: #f8fafc;
-}
+  .title {
+    text-align: center;
+    font-size: 3rem;
+    margin: 1rem;
+    color: white;
+  }
 
-.faq-question {
-  width: 100%;
-  text-align: left;
-  padding: 18px 20px;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: rgb(0, 158, 16);
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s;
-}
+  .faq-section {
+    padding: 4em 2em;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
 
-.faq-question:hover {
-  background: #e6f7ff;
-}
+  .faq {
+    list-style: none;
+    max-width: 700px;
+    margin: 0 auto;
+  }
 
-.faq-answer {
-  display: none;
-  padding: 15px 20px;
-  color: #444;
-  line-height: 1.6;
-}
+  .faq li {
+    background: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
 
-.faq-item.active .faq-answer {
-  display: block;
-}
+  .faq li:first-child {
+    border-top: none;
+  }
 
-.faq-item.active .faq-question::before {
-  content: "– ";
-}
+  .q {
+    padding: 1em 1.5em;
+    border-left: 4px solid #667eea;
+    cursor: pointer;
+    color: #333;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
 
-.faq-item:not(.active) .faq-question::before {
-  content: "+ ";
-}
+  .q:hover {
+    background-color: #f8f9ff;
+    border-left-color: #764ba2;
+  }
+
+  .q:hover .arrow {
+    border-left-color: #764ba2;
+  }
+
+  .arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin: 0 0.5em;
+    border-top: 6px solid transparent;
+    border-left: 10px solid #667eea;
+    border-bottom: 6px solid transparent;
+    transition: 0.3s;
+  }
+
+  .faq p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  .a {
+    overflow: hidden;
+    height: 0;
+    padding: 0 1.5em 0 3.3em;
+    transition: all 0.3s ease;
+  }
+
+  .a.a-opened {
+    padding: 1em 1.5em 2em 3.3em;
+    height: auto;
+  }
+
+  .arrow.arrow-rotated {
+    transform: rotate(90deg);
+  }
+
 </style>
-
-<script>
-    document.querySelectorAll(".faq-question").forEach((button) => {
-    button.addEventListener("click", () => {
-        const faqItem = button.parentElement;
-        const isActive = faqItem.classList.contains("active");
-
-        document.querySelectorAll(".faq-item").forEach((item) => {
-        item.classList.remove("active");
-        });
-
-        if (!isActive) {
-        faqItem.classList.add("active");
-        }
-    });
-    });
-</script>
 
