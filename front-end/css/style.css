@@ -504,3 +504,177 @@ body.alto-contraste .localizacao-footer a:hover {
         text-align: center;
     }
 }
+
+/* PÁGINA TRANSPARÊNCIA */
+
+.transparencia-hero {
+    padding: 80px 4% 60px;
+    background: linear-gradient(135deg, #000000 0%, #000000 100%);
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 42px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.transparencia-ano {
+    padding: 60px 4%;
+    border-bottom: 2px solid #333;
+}
+
+.ano-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.ano-header h2 {
+    font-size: 36px;
+    color: rgb(0, 158, 16);
+    font-weight: 700;
+}
+
+.transparencia-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.categoria-transparencia {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid #333;
+}
+
+.categoria-transparencia h3 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgb(0, 158, 16);
+}
+
+.botoes-download {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-download {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, rgb(0, 158, 16) 0%, rgb(0, 120, 12) 100%);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 158, 16, 0.3);
+    background: linear-gradient(135deg, rgb(0, 180, 18) 0%, rgb(0, 140, 14) 100%);
+}
+
+.btn-download i {
+    font-size: 16px;
+}
+
+/* Responsividade para transparência */
+@media (max-width: 768px) {
+    .transparencia-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .categoria-transparencia {
+        padding: 20px;
+    }
+    
+    .hero-content h1 {
+        font-size: 28px;
+    }
+    
+    .hero-content p {
+        font-size: 16px;
+    }
+    
+    .ano-header h2 {
+        font-size: 28px;
+    }
+    
+    .categoria-transparencia h3 {
+        font-size: 20px;
+    }
+}
+
+/* Alto contraste para página de transparência - deve vir por último para ter precedência */
+body.alto-contraste .transparencia-hero {
+    background: #000 !important;
+}
+
+body.alto-contraste .hero-content h1 {
+    color: #fff !important;
+}
+
+body.alto-contraste .hero-content p {
+    color: #fff !important;
+}
+
+body.alto-contraste .transparencia-ano {
+    background-color: #000 !important;
+    border-bottom: 2px solid #fff !important;
+}
+
+body.alto-contraste .ano-header h2 {
+    color: #ffff00 !important;
+}
+
+body.alto-contraste .categoria-transparencia {
+    background: #111 !important;
+    border: 2px solid #fff !important;
+}
+
+body.alto-contraste .categoria-transparencia h3 {
+    color: #fff !important;
+    border-bottom: 2px solid #ffff00 !important;
+}
+
+body.alto-contraste .btn-download {
+    background: #ffff00 !important;
+    color: #000 !important;
+    border: 2px solid #fff !important;
+}
+
+body.alto-contraste .btn-download:hover {
+    background: #fff !important;
+    color: #000 !important;
+    border: 2px solid #ffff00 !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+body.alto-contraste .btn-download i {
+    color: #000 !important;
+}
