@@ -56,6 +56,7 @@ function initPage() {
     document.addEventListener('click', (e) => {
         if (e.target.closest('#toggle-contraste')) {
             document.body.classList.toggle('alto-contraste');
+            console.log('Alto contraste ativo:', document.body.classList.contains('alto-contraste'));
         }
     });
 }

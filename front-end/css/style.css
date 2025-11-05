@@ -311,6 +311,145 @@ body.alto-contraste button {
     border: 2px solid #fff !important;
 }
 
+/* Regra universal para garantir que todos os elementos fiquem brancos */
+body.alto-contraste * {
+    color: #fff !important;
+}
+
+/* Spans e destaques em amarelo */
+body.alto-contraste span {
+    color: #ffff00 !important;
+}
+
+/* Alto contraste para seção topo */
+body.alto-contraste section.topo-site {
+    background-color: #000 !important;
+}
+
+body.alto-contraste section.topo-site .interface {
+    background-color: #000 !important;
+}
+
+body.alto-contraste .topo-site h1,
+body.alto-contraste .topo-site .txt-topo-site h1,
+body.alto-contraste section.topo-site h1,
+body.alto-contraste section.topo-site .txt-topo-site h1 {
+    color: #fff !important;
+}
+
+body.alto-contraste .topo-site p,
+body.alto-contraste .topo-site .txt-topo-site p,
+body.alto-contraste section.topo-site p,
+body.alto-contraste section.topo-site .txt-topo-site p {
+    color: #fff !important;
+}
+
+body.alto-contraste .topo-site h1 span,
+body.alto-contraste .topo-site .txt-topo-site h1 span,
+body.alto-contraste section.topo-site h1 span,
+body.alto-contraste section.topo-site .txt-topo-site h1 span {
+    color: #ffff00 !important;
+}
+
+/* Alto contraste para seção de horários */
+body.alto-contraste .horario-atendimento {
+    background-color: #000 !important;
+}
+
+body.alto-contraste .horario-box {
+    background-color: #222 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+
+body.alto-contraste .horario-box h3,
+body.alto-contraste .horario-box p {
+    color: #fff !important;
+}
+
+/* Alto contraste para galeria/especialidades */
+body.alto-contraste .especialidades {
+    background-color: #000 !important;
+}
+
+body.alto-contraste .card {
+    background-color: #222 !important;
+    border: 2px solid #fff !important;
+}
+
+body.alto-contraste .card p {
+    color: #fff !important;
+}
+
+/* Alto contraste para FAQ */
+body.alto-contraste .faq-section {
+    background-color: #000 !important;
+}
+
+body.alto-contraste .title {
+    color: #fff !important;
+}
+
+body.alto-contraste .title span {
+    color: #ffff00 !important;
+}
+
+body.alto-contraste .faq li {
+    background-color: #222 !important;
+    border: 2px solid #fff !important;
+}
+
+body.alto-contraste .q {
+    color: #fff !important;
+    background-color: #111 !important;
+    border-left-color: #ffff00 !important;
+}
+
+body.alto-contraste .q:hover {
+    background-color: #333 !important;
+}
+
+body.alto-contraste .arrow {
+    border-left-color: #ffff00 !important;
+}
+
+body.alto-contraste .a {
+    background-color: #111 !important;
+}
+
+body.alto-contraste .faq p {
+    color: #fff !important;
+}
+
+/* Alto contraste para títulos gerais */
+body.alto-contraste h2.titulo {
+    color: #fff !important;
+}
+
+body.alto-contraste h2.titulo span {
+    color: #ffff00 !important;
+}
+
+/* Alto contraste para botões sociais */
+body.alto-contraste .btn-social button {
+    background-color: #ffff00 !important;
+    color: #000 !important;
+    border: 2px solid #fff !important;
+}
+
+/* Alto contraste para ícones */
+body.alto-contraste .localizacao-footer i {
+    color: #ffff00 !important;
+}
+
+body.alto-contraste .localizacao-footer a {
+    color: #fff !important;
+}
+
+body.alto-contraste .localizacao-footer a:hover {
+    color: #ffff00 !important;
+}
+
 /* MEDIA QUERIES */
 
 @media (max-width: 768px) {
