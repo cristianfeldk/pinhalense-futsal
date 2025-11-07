@@ -76,47 +76,204 @@ header nav ul li {
 /* TOPO */
 
 section.topo-site {
-    padding: 40px 4%;
+    padding: 60px 4%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
 }
 
-section.topo-site .flex {
-    align-items: center;
-    justify-content: center;
-    gap: 90px;
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Lado Esquerdo - Conteúdo Principal */
+.txt-topo-site {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .topo-site h1 {
     color: #fff;
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 0;
 }
 
 .topo-site .txt-topo-site h1 span {
     color: rgb(0, 158, 16);
 }
 
-.topo-site .txt-topo-site p {
-    color: #fff;
-    margin: 40px 0;
-    text-align: left;
+.descricao-principal {
+    color: #ccc;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
 }
 
-.topo-site .img-topo-site {
-    position: relative;
-    animation: flutuar 1.5s ease-in-out infinite alternate;
+/* Estatísticas */
+.stats-section {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
 }
 
-.img-topo-site img {
-    width: 300px;
-    border-radius: 50px;
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-@keyframes flutuar {
-    0% {
-        top: 0;
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: rgb(0, 158, 16);
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-top: 5px;
+}
+
+/* Lado Direito - Logo e História */
+.logo-historia-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-hero {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
     }
-    100% {
-        top: 20px;
+    50% {
+        filter: drop-shadow(0 10px 30px rgba(0, 158, 16, 0.3));
+    }
+}
+
+.historia-card {
+    background: rgba(23, 23, 23, 0.8);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 158, 16, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.historia-card h3 {
+    color: rgb(0, 158, 16);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.historia-card p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.marcos-historicos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.marco {
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    background: rgba(0, 158, 16, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid rgb(0, 158, 16);
+}
+
+.marco strong {
+    color: rgb(0, 158, 16);
+    margin-right: 8px;
+}
+
+/* Responsividade para seção topo */
+@media (max-width: 1024px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .stats-section {
+        justify-content: center;
+    }
+    
+    .logo-hero {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    section.topo-site {
+        padding: 40px 4%;
+        min-height: auto;
+    }
+    
+    .topo-site h1 {
+        font-size: 2.2rem;
+    }
+    
+    .descricao-principal {
+        font-size: 1rem;
+    }
+    
+    .stats-section {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .stat-label {
+        font-size: 0.85rem;
+    }
+    
+    .logo-hero {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .historia-card {
+        padding: 20px;
+    }
+    
+    .historia-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .marco {
+        font-size: 0.85rem;
+        padding: 6px 10px;
     }
 }
 
@@ -484,6 +641,41 @@ body.alto-contraste .topo-site h1 span,
 body.alto-contraste .topo-site .txt-topo-site h1 span,
 body.alto-contraste section.topo-site h1 span,
 body.alto-contraste section.topo-site .txt-topo-site h1 span {
+    color: #ffff00 !important;
+}
+
+body.alto-contraste .descricao-principal {
+    color: #fff !important;
+}
+
+body.alto-contraste .stat-number {
+    color: #ffff00 !important;
+}
+
+body.alto-contraste .stat-label {
+    color: #fff !important;
+}
+
+body.alto-contraste .historia-card {
+    background: #111 !important;
+    border: 2px solid #fff !important;
+}
+
+body.alto-contraste .historia-card h3 {
+    color: #ffff00 !important;
+}
+
+body.alto-contraste .historia-card p {
+    color: #fff !important;
+}
+
+body.alto-contraste .marco {
+    background: rgba(255, 255, 0, 0.1) !important;
+    border-left: 3px solid #ffff00 !important;
+    color: #fff !important;
+}
+
+body.alto-contraste .marco strong {
     color: #ffff00 !important;
 }
 
