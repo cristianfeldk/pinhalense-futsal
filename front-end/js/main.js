@@ -54,9 +54,31 @@ function initPage() {
 
 
     document.addEventListener('click', (e) => {
+        // Funcionalidade do menu de acessibilidade
+        if (e.target.closest('#btn-acessibilidade')) {
+            const menuAcessibilidade = e.target.closest('.menu-acessibilidade');
+            menuAcessibilidade.classList.toggle('active');
+            console.log('Menu de acessibilidade toggled');
+        }
+        
+        // Funcionalidade do alto contraste
         if (e.target.closest('#toggle-contraste')) {
             document.body.classList.toggle('alto-contraste');
             console.log('Alto contraste ativo:', document.body.classList.contains('alto-contraste'));
+            
+            // Fechar o menu após selecionar uma opção
+            const menuAcessibilidade = document.querySelector('.menu-acessibilidade');
+            if (menuAcessibilidade) {
+                menuAcessibilidade.classList.remove('active');
+            }
+        }
+        
+        // Fechar menu se clicar fora dele
+        if (!e.target.closest('.menu-acessibilidade')) {
+            const menuAcessibilidade = document.querySelector('.menu-acessibilidade');
+            if (menuAcessibilidade) {
+                menuAcessibilidade.classList.remove('active');
+            }
         }
     });
 }

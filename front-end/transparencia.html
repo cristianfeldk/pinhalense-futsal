@@ -223,10 +223,18 @@
     <div id="footer-placeholder"></div>
 
     <script>
-        // Funcionalidade do botão de contraste usando event delegation
+        // Funcionalidade do menu de acessibilidade usando event delegation
         document.addEventListener('click', (e) => {
             console.log('Clique detectado em:', e.target);
             
+            // Funcionalidade do menu de acessibilidade
+            if (e.target.closest('#btn-acessibilidade')) {
+                const menuAcessibilidade = e.target.closest('.menu-acessibilidade');
+                menuAcessibilidade.classList.toggle('active');
+                console.log('Menu de acessibilidade toggled');
+            }
+            
+            // Funcionalidade do alto contraste
             if (e.target.closest('#toggle-contraste')) {
                 console.log('Botão de contraste clicado!');
                 document.body.classList.toggle('alto-contraste');
@@ -243,6 +251,20 @@
                     console.log('Alto contraste ATIVADO!');
                 } else {
                     console.log('Alto contraste DESATIVADO!');
+                }
+                
+                // Fechar o menu após selecionar uma opção
+                const menuAcessibilidade = document.querySelector('.menu-acessibilidade');
+                if (menuAcessibilidade) {
+                    menuAcessibilidade.classList.remove('active');
+                }
+            }
+            
+            // Fechar menu se clicar fora dele
+            if (!e.target.closest('.menu-acessibilidade')) {
+                const menuAcessibilidade = document.querySelector('.menu-acessibilidade');
+                if (menuAcessibilidade) {
+                    menuAcessibilidade.classList.remove('active');
                 }
             }
         });

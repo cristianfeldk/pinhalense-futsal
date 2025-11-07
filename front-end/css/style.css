@@ -167,6 +167,65 @@ section.topo-site .flex {
     color: #ccc;
 }
 
+/* Card único para informações */
+.card-unico {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.info-content {
+    background: #171717;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    color: #fff;
+    max-width: 600px;
+    width: 100%;
+    text-align: left;
+}
+
+.info-content h3 {
+    color: rgb(0, 158, 16);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.info-content p {
+    margin: 8px 0;
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.info-content strong {
+    color: #fff;
+}
+
+.divisor {
+    border: none;
+    height: 1px;
+    background: rgb(0, 158, 16);
+    margin: 25px 0;
+}
+
+/* Responsividade para card único */
+@media (max-width: 768px) {
+    .info-content {
+        padding: 20px;
+        margin: 0 15px;
+    }
+    
+    .info-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .info-content p {
+        font-size: 0.9rem;
+    }
+}
+
 /* ESPECIALIDADES (GALERIA) */
 
 section.especialidades {
@@ -269,9 +328,14 @@ footer .flex {
     transition: .2s;
 }
 
-/* BOTÃO DE CONTRASTE */
+/* MENU DE ACESSIBILIDADE */
 
-.btn-contraste button {
+.menu-acessibilidade {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-acessibilidade {
     background-color: #333;
     color: #fff;
     border: none;
@@ -279,10 +343,82 @@ footer .flex {
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.btn-contraste button:hover {
+.btn-acessibilidade:hover {
     background-color: #555;
+}
+
+.arrow-dropdown {
+    transition: transform 0.3s ease;
+}
+
+.menu-acessibilidade.active .arrow-dropdown {
+    transform: rotate(180deg);
+}
+
+.dropdown-acessibilidade {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #000000;
+    border: 1px solid #6a6a6a;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.menu-acessibilidade.active .dropdown-acessibilidade {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.opcao-acessibilidade {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    color: #fafafa;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 6px;
+    margin: 4px;
+}
+
+.opcao-acessibilidade:hover {
+    background-color: #f5f5f5;
+}
+
+.opcao-acessibilidade i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Estilos para alto contraste no menu */
+body.alto-contraste .dropdown-acessibilidade {
+    background-color: #111 !important;
+    border: 2px solid #fff !important;
+}
+
+body.alto-contraste .opcao-acessibilidade {
+    color: #fff !important;
+}
+
+body.alto-contraste .opcao-acessibilidade:hover {
+    background-color: #333 !important;
 }
 
 /* ESTILOS DO MODO ALTO CONTRASTE */
@@ -363,8 +499,30 @@ body.alto-contraste .horario-box {
 }
 
 body.alto-contraste .horario-box h3,
+body.alto-contraste .horario-box h4,
 body.alto-contraste .horario-box p {
     color: #fff !important;
+}
+
+body.alto-contraste .info-content {
+    background-color: #111 !important;
+    border: 2px solid #fff !important;
+}
+
+body.alto-contraste .info-content h3 {
+    color: #ffff00 !important;
+}
+
+body.alto-contraste .info-content p {
+    color: #fff !important;
+}
+
+body.alto-contraste .info-content strong {
+    color: #ffff00 !important;
+}
+
+body.alto-contraste .divisor {
+    background: #ffff00 !important;
 }
 
 /* Alto contraste para galeria/especialidades */
@@ -481,6 +639,22 @@ body.alto-contraste .localizacao-footer a:hover {
 
     nav.menu-desktop {
         display: none;
+    }
+
+    /* Menu de acessibilidade responsivo */
+    .btn-acessibilidade {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .dropdown-acessibilidade {
+        right: -10px;
+        min-width: 180px;
+    }
+
+    .opcao-acessibilidade {
+        padding: 10px 12px;
+        font-size: 14px;
     }
 
     h2.titulo {
