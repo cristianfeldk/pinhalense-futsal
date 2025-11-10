@@ -367,6 +367,41 @@ section.topo-site {
     margin: 25px 0;
 }
 
+/* Botão certificado */
+.botao-certificado-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.btn-certificado {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, rgb(0, 158, 16) 0%, rgb(0, 120, 12) 100%);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-certificado:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 158, 16, 0.4);
+    background: linear-gradient(135deg, rgb(0, 180, 18) 0%, rgb(0, 140, 14) 100%);
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-certificado i {
+    font-size: 18px;
+}
+
 /* Responsividade para card único */
 @media (max-width: 768px) {
     .info-content {
@@ -380,6 +415,15 @@ section.topo-site {
     
     .info-content p {
         font-size: 0.9rem;
+    }
+    
+    .btn-certificado {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .btn-certificado i {
+        font-size: 16px;
     }
 }
 
@@ -715,6 +759,23 @@ body.alto-contraste .info-content strong {
 
 body.alto-contraste .divisor {
     background: #ffff00 !important;
+}
+
+body.alto-contraste .btn-certificado {
+    background: #ffff00 !important;
+    color: #000 !important;
+    border: 2px solid #fff !important;
+}
+
+body.alto-contraste .btn-certificado:hover {
+    background: #fff !important;
+    color: #000 !important;
+    border: 2px solid #ffff00 !important;
+    box-shadow: 0 8px 20px rgba(255, 255, 0, 0.4) !important;
+}
+
+body.alto-contraste .btn-certificado i {
+    color: #000 !important;
 }
 
 /* Alto contraste para galeria/especialidades */
