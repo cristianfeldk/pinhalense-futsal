@@ -82,13 +82,14 @@ section.topo-site {
     align-items: center;
 }
 
-.hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    gap: 60px;
-    max-width: 1400px;
+.topo-site .hero-content {
+    text-align: center;
+    max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
 }
 
 /* Lado Esquerdo - Conteúdo Principal */
@@ -96,6 +97,9 @@ section.topo-site {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    align-items: center;
+    text-align: center;
+    width: 100%;
 }
 
 .topo-site h1 {
@@ -103,6 +107,7 @@ section.topo-site {
     font-size: 2.8rem;
     line-height: 1.2;
     margin-bottom: 0;
+    text-align: center;
 }
 
 .topo-site .txt-topo-site h1 span {
@@ -114,6 +119,8 @@ section.topo-site {
     font-size: 1.1rem;
     line-height: 1.6;
     margin: 0;
+    text-align: center;
+    max-width: 800px;
 }
 
 /* Estatísticas */
@@ -121,6 +128,7 @@ section.topo-site {
     display: flex;
     gap: 30px;
     margin-top: 20px;
+    justify-content: center;
 }
 
 .stat-item {
@@ -148,6 +156,9 @@ section.topo-site {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    width: 100%;
+    max-width: 900px;
+    align-items: center;
 }
 
 .logo-container {
@@ -214,23 +225,6 @@ section.topo-site {
 }
 
 /* Responsividade para seção topo */
-@media (max-width: 1024px) {
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
-    }
-    
-    .stats-section {
-        justify-content: center;
-    }
-    
-    .logo-hero {
-        width: 150px;
-        height: 150px;
-    }
-}
-
 @media (max-width: 768px) {
     section.topo-site {
         padding: 40px 4%;
@@ -250,17 +244,17 @@ section.topo-site {
         gap: 20px;
     }
     
+    .logo-hero {
+        width: 150px;
+        height: 150px;
+    }
+    
     .stat-number {
         font-size: 1.8rem;
     }
     
     .stat-label {
         font-size: 0.85rem;
-    }
-    
-    .logo-hero {
-        width: 120px;
-        height: 120px;
     }
     
     .historia-card {
@@ -446,13 +440,15 @@ section.especialidades .flex {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding: 15px;
-    max-width: 250px;
+    width: 320px;
     text-align: center;
     transition: transform 0.3s;
 }
 
 .card img {
     width: 100%;
+    height: 240px;
+    object-fit: cover;
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -939,22 +935,56 @@ body.alto-contraste .localizacao-footer a:hover {
     background: linear-gradient(135deg, #000000 0%, #000000 100%);
 }
 
-.hero-content {
+.transparencia-hero .hero-content {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
-.hero-content h1 {
+.transparencia-hero .hero-content h1 {
     font-size: 42px;
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+    display: block;
+    width: 100%;
 }
 
-.hero-content p {
-    font-size: 18px;
-    color: #ffffff;
+.transparencia-hero .hero-content h1 .destaque {
+    color: rgb(0, 158, 16);
+    position: relative;
+    display: inline;
+}
+
+.transparencia-hero .hero-content h1 .destaque::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgb(0, 158, 16);
+    border-radius: 2px;
+}
+
+.transparencia-hero .hero-content h1 .ponto {
+    color: rgb(0, 158, 16);
+    font-weight: 700;
+    display: inline;
+}
+
+.transparencia-hero .hero-content p {
+    font-size: 16px;
+    color: #cccccc;
     line-height: 1.6;
+    max-width: 700px;
+    margin: 0;
+    display: block;
 }
 
 .transparencia-ano {
@@ -1039,11 +1069,11 @@ body.alto-contraste .localizacao-footer a:hover {
         padding: 20px;
     }
     
-    .hero-content h1 {
+    .transparencia-hero .hero-content h1 {
         font-size: 28px;
     }
     
-    .hero-content p {
+    .transparencia-hero .hero-content p {
         font-size: 16px;
     }
     
@@ -1061,11 +1091,20 @@ body.alto-contraste .transparencia-hero {
     background: #000 !important;
 }
 
-body.alto-contraste .hero-content h1 {
+body.alto-contraste .transparencia-hero .hero-content h1 {
     color: #fff !important;
 }
 
-body.alto-contraste .hero-content p {
+body.alto-contraste .transparencia-hero .hero-content h1 .destaque,
+body.alto-contraste .transparencia-hero .hero-content h1 .ponto {
+    color: #ffff00 !important;
+}
+
+body.alto-contraste .transparencia-hero .hero-content h1 .destaque::after {
+    background: #ffff00 !important;
+}
+
+body.alto-contraste .transparencia-hero .hero-content p {
     color: #fff !important;
 }
 
