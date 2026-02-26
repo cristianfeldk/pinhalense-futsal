@@ -1,0 +1,48 @@
+# Habilitar reescrita de URL
+RewriteEngine On
+
+# Redirecionar www para não-www (opcional)
+# RewriteCond %{HTTP_HOST} ^www\.futsalpinhalense\.com\.br [NC]
+# RewriteRule ^(.*)$ http://futsalpinhalense.com.br/$1 [L,R=301]
+
+# Forçar HTTPS (se disponível)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Define a página inicial
+DirectoryIndex index.html
+
+# Habilitar CORS para includes HTML
+<FilesMatch "\.(html)$">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
+# Compressão GZIP
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache de arquivos estáticos
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+</IfModule>
+
+# Segurança - Ocultar listagem de diretórios
+Options -Indexes
+
+# Proteção contra clickjacking
+Header always append X-Frame-Options SAMEORIGIN
+
+# Proteção XSS
+Header set X-XSS-Protection "1; mode=block"
+
+# Proteção contra MIME type sniffing
+Header set X-Content-Type-Options nosniff

@@ -4,30 +4,26 @@ function loadHTML(id, file) {
 
     const filePath = `./includes/${file}`;
 
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.src = filePath;
-
-    iframe.onload = function () {
-        try {
-            const content = iframe.contentDocument.body.innerHTML;
+    fetch(filePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(content => {
             el.innerHTML = content;
             
-            // Se carregou o FAQ, inicializa a funcionalidade
             if (file === 'section-faq.html') {
-                setTimeout(initFAQ, 50); // Pequeno delay para garantir que o DOM foi atualizado
+                setTimeout(initFAQ, 50); 
             }
-        } catch (err) {
+        })
+        .catch(err => {
+            console.error(`Erro ao carregar ${file}:`, err);
             el.innerHTML = `<p style="color:red;">Erro ao carregar ${file}</p>`;
-        } finally {
-            iframe.remove();
-        }
-    };
-
-    document.body.appendChild(iframe);
+        });
 }
 
-// Função para inicializar a funcionalidade do FAQ
 function initFAQ() {
     const q = document.querySelectorAll(".q");
     const a = document.querySelectorAll(".a");
@@ -54,26 +50,22 @@ function initPage() {
 
 
     document.addEventListener('click', (e) => {
-        // Funcionalidade do menu de acessibilidade
         if (e.target.closest('#btn-acessibilidade')) {
             const menuAcessibilidade = e.target.closest('.menu-acessibilidade');
             menuAcessibilidade.classList.toggle('active');
             console.log('Menu de acessibilidade toggled');
         }
         
-        // Funcionalidade do alto contraste
         if (e.target.closest('#toggle-contraste')) {
             document.body.classList.toggle('alto-contraste');
             console.log('Alto contraste ativo:', document.body.classList.contains('alto-contraste'));
             
-            // Fechar o menu após selecionar uma opção
             const menuAcessibilidade = document.querySelector('.menu-acessibilidade');
             if (menuAcessibilidade) {
                 menuAcessibilidade.classList.remove('active');
             }
         }
         
-        // Fechar menu se clicar fora dele
         if (!e.target.closest('.menu-acessibilidade')) {
             const menuAcessibilidade = document.querySelector('.menu-acessibilidade');
             if (menuAcessibilidade) {
