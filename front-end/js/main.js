@@ -252,10 +252,9 @@ function initPDFViewer() {
     let isRendering = false;
 
     const pdfPaths = [
-        './assets/Apresentação  Pinhalense Futsal - atualizada.pdf',
-        './assets/Apresenta%C3%A7%C3%A3o%20%20Pinhalense%20Futsal%20-%20atualizada.pdf',
-        'assets/Apresentação  Pinhalense Futsal - atualizada.pdf',
-        '/front-end/assets/Apresentação  Pinhalense Futsal - atualizada.pdf'
+        './assets/apresentacao-pinhalense-futsal.pdf',
+        'assets/apresentacao-pinhalense-futsal.pdf',
+        '/assets/apresentacao-pinhalense-futsal.pdf'
     ];
     
     let pdfUrl = pdfPaths[0];
