@@ -44,6 +44,71 @@ function initFAQ() {
     }
 }
 
+// Sistema de roteamento com History API
+const routes = {
+    '/': { section: 'topo', title: 'APEB - Pinhalense Futsal' },
+    '/conquistas': { section: 'conquistas', title: 'Conquistas - APEB' },
+    '/galeria': { section: 'galeria', title: 'Galeria - APEB' },
+    '/apresentacao': { section: 'apresentacao', title: 'Apresentação - APEB' },
+    '/apoio': { section: 'como-apoiar', title: 'Como Apoiar - APEB' },
+    '/faq': { section: 'faq', title: 'FAQ - APEB' },
+};
+
+function navigate(path, addToHistory = true) {
+    const route = routes[path];
+    
+    if (route) {
+        if (addToHistory) {
+            window.history.pushState({ path }, '', path);
+        }
+        
+        document.title = route.title;
+        
+        const section = document.getElementById(route.section);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+}
+
+function initRouter() {
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="/"]');
+        if (link) {
+            e.preventDefault();
+            const path = link.getAttribute('href');
+            navigate(path);
+            return;
+        }
+        
+        // Permitir navegação por âncoras internas (#horario, etc)
+        const hashLink = e.target.closest('a[href^="#"]');
+        if (hashLink) {
+            e.preventDefault();
+            const targetId = hashLink.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+    
+    window.addEventListener('popstate', (e) => {
+        if (e.state && e.state.path) {
+            navigate(e.state.path, false);
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+    
+    const currentPath = window.location.pathname;
+    if (routes[currentPath]) {
+        setTimeout(() => {
+            navigate(currentPath, false);
+        }, 500);
+    }
+}
+
 function initPage() {
     loadHTML('header', 'header.html');
     loadHTML('topo', 'section-topo.html');
@@ -57,6 +122,7 @@ function initPage() {
     loadHTML('footer', 'footer.html');
 
     setTimeout(initSearch, 100);
+    setTimeout(initRouter, 200);
 
     document.addEventListener('click', (e) => {
         if (e.target.closest('#btn-acessibilidade')) {
