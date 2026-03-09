@@ -251,30 +251,51 @@ function initPDFViewer() {
     let currentScale = 0.5;
     let isRendering = false;
 
-    const pdfUrl = './assets/Apresenta%C3%A7%C3%A3o%20%20Pinhalense%20Futsal%20-%20atualizada.pdf';
+    const pdfPaths = [
+        './assets/Apresentação  Pinhalense Futsal - atualizada.pdf',
+        './assets/Apresenta%C3%A7%C3%A3o%20%20Pinhalense%20Futsal%20-%20atualizada.pdf',
+        'assets/Apresentação  Pinhalense Futsal - atualizada.pdf',
+        '/front-end/assets/Apresentação  Pinhalense Futsal - atualizada.pdf'
+    ];
+    
+    let pdfUrl = pdfPaths[0];
 
     async function loadPDF() {
-        try {
-            console.log('=== Tentando carregar PDF ===');
-            console.log('URL:', pdfUrl);
-            
-            const loadingTask = window.pdfjsLib.getDocument({
-                url: pdfUrl,
-                cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
-                cMapPacked: true,
-            });
-            
-            pdfDoc = await loadingTask.promise;
-            totalPages = pdfDoc.numPages;
-            totalPagesSpan.textContent = totalPages;
-            console.log('✅ PDF carregado com sucesso! Total de páginas:', totalPages);
-            await renderPage(currentPage);
-        } catch (error) {
-            console.error('❌ Erro detalhado ao carregar PDF:', error);
-            console.error('Tipo de erro:', error.name);
-            console.error('Mensagem:', error.message);
-            loadingSpinner.innerHTML = '<i class="bi bi-exclamation-triangle"></i><p>Erro ao carregar a apresentação. Verifique o console.</p>';
+        let lastError = null;
+        
+        for (let i = 0; i < pdfPaths.length; i++) {
+            try {
+                pdfUrl = pdfPaths[i];
+                console.log(`Tentativa ${i + 1}: Carregando PDF de:`, pdfUrl);
+                
+                const loadingTask = window.pdfjsLib.getDocument({
+                    url: pdfUrl,
+                    cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
+                    cMapPacked: true,
+                });
+                
+                pdfDoc = await loadingTask.promise;
+                totalPages = pdfDoc.numPages;
+                totalPagesSpan.textContent = totalPages;
+                console.log('PDF carregado com sucesso de:', pdfUrl);
+                console.log('Total de páginas:', totalPages);
+                await renderPage(currentPage);
+                return;
+                
+            } catch (error) {
+                console.warn(`Falha na tentativa ${i + 1}:`, error.message);
+                lastError = error;
+                continue; 
+            }
         }
+        
+        console.error('Não foi possível carregar o PDF de nenhum caminho');
+        console.error('Último erro:', lastError);
+        loadingSpinner.innerHTML = `
+            <i class="bi bi-exclamation-triangle"></i>
+            <p style="color: #ff6b6b; margin-top: 10px;">Arquivo PDF não encontrado no servidor.</p>
+            <p style="color: #888; font-size: 14px; margin-top: 5px;">Verifique se o arquivo foi enviado para a pasta "assets".</p>
+        `;
     }
 
     async function renderPage(pageNum) {
