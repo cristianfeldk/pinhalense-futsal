@@ -251,19 +251,29 @@ function initPDFViewer() {
     let currentScale = 0.5;
     let isRendering = false;
 
-    const pdfUrl = './assets/Apresentação  Pinhalense Futsal - atualizada.pdf';
+    const pdfUrl = './assets/Apresenta%C3%A7%C3%A3o%20%20Pinhalense%20Futsal%20-%20atualizada.pdf';
 
     async function loadPDF() {
         try {
-            console.log('Carregando PDF:', pdfUrl);
-            pdfDoc = await window.pdfjsLib.getDocument(pdfUrl).promise;
+            console.log('=== Tentando carregar PDF ===');
+            console.log('URL:', pdfUrl);
+            
+            const loadingTask = window.pdfjsLib.getDocument({
+                url: pdfUrl,
+                cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
+                cMapPacked: true,
+            });
+            
+            pdfDoc = await loadingTask.promise;
             totalPages = pdfDoc.numPages;
             totalPagesSpan.textContent = totalPages;
-            console.log('PDF carregado com sucesso! Total de páginas:', totalPages);
+            console.log('✅ PDF carregado com sucesso! Total de páginas:', totalPages);
             await renderPage(currentPage);
         } catch (error) {
-            console.error('Erro ao carregar PDF:', error);
-            loadingSpinner.innerHTML = '<i class="bi bi-exclamation-triangle"></i><p>Erro ao carregar a apresentação.</p>';
+            console.error('❌ Erro detalhado ao carregar PDF:', error);
+            console.error('Tipo de erro:', error.name);
+            console.error('Mensagem:', error.message);
+            loadingSpinner.innerHTML = '<i class="bi bi-exclamation-triangle"></i><p>Erro ao carregar a apresentação. Verifique o console.</p>';
         }
     }
 
