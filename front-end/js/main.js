@@ -48,6 +48,7 @@ function initPage() {
     loadHTML('horario', 'section-horarios.html');
     loadHTML('footer', 'footer.html');
 
+    setTimeout(initSearch, 100);
 
     document.addEventListener('click', (e) => {
         if (e.target.closest('#btn-acessibilidade')) {
@@ -72,6 +73,134 @@ function initPage() {
                 menuAcessibilidade.classList.remove('active');
             }
         }
+    });
+}
+
+function initSearch() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    if (!searchInput) {
+        console.log('Elementos de busca não encontrados, tentando novamente...');
+        return;
+    }
+
+    let searchTimeout;
+    searchInput.addEventListener('input', () => {
+        clearTimeout(searchTimeout);
+        const query = searchInput.value.trim();
+        
+        if (query.length < 2) {
+            searchResults.classList.remove('show');
+            return;
+        }
+
+        searchTimeout = setTimeout(() => {
+            performSearch(query);
+        }, 300);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.busca-container')) {
+            searchResults.classList.remove('show');
+        }
+    });
+}
+
+function performSearch(query) {
+    const searchResults = document.getElementById('search-results');
+    const results = [];
+    
+    const searchableElements = document.querySelectorAll('h1, h2, h3, h4, p, li, span, a');
+    const queryLower = query.toLowerCase();
+
+    searchableElements.forEach(element => {
+        const text = element.textContent;
+        const textLower = text.toLowerCase();
+        
+        if (textLower.includes(queryLower) && text.trim().length > 0) {
+            const index = textLower.indexOf(queryLower);
+            const start = Math.max(0, index - 40);
+            const end = Math.min(text.length, index + query.length + 40);
+            let snippet = text.substring(start, end);
+            
+            if (start > 0) snippet = '...' + snippet;
+            if (end < text.length) snippet = snippet + '...';
+
+            const regex = new RegExp(`(${query})`, 'gi');
+            snippet = snippet.replace(regex, '<mark>$1</mark>');
+
+            let section = 'Página';
+            const closestSection = element.closest('section');
+            if (closestSection) {
+                const sectionTitle = closestSection.querySelector('h2, h3');
+                if (sectionTitle) {
+                    section = sectionTitle.textContent.trim();
+                }
+            }
+
+            results.push({
+                element: element,
+                section: section,
+                snippet: snippet,
+                text: text.trim()
+            });
+        }
+    });
+
+    displayResults(results, query);
+}
+
+function displayResults(results, query) {
+    const searchResults = document.getElementById('search-results');
+    
+    if (results.length === 0) {
+        searchResults.innerHTML = `
+            <div class="no-results">
+                <i class="bi bi-search" style="font-size: 24px; margin-bottom: 10px; display: block;"></i>
+                Nenhum resultado encontrado para "${query}"
+            </div>
+        `;
+        searchResults.classList.add('show');
+        return;
+    }
+
+    const uniqueResults = [];
+    const seenTexts = new Set();
+    
+    results.forEach(result => {
+        const key = result.text.substring(0, 100);
+        if (!seenTexts.has(key)) {
+            seenTexts.add(key);
+            uniqueResults.push(result);
+        }
+    });
+
+    const limitedResults = uniqueResults.slice(0, 10);
+
+    searchResults.innerHTML = limitedResults.map(result => `
+        <div class="search-result-item" data-element-id="${result.element.id || ''}">
+            <div class="search-result-title">${result.section}</div>
+            <div class="search-result-text">${result.snippet}</div>
+        </div>
+    `).join('');
+
+    searchResults.classList.add('show');
+
+    searchResults.querySelectorAll('.search-result-item').forEach((item, index) => {
+        item.addEventListener('click', () => {
+            const element = limitedResults[index].element;
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            element.style.transition = 'background-color 0.3s';
+            element.style.backgroundColor = 'rgba(0, 158, 16, 0.2)';
+            
+            setTimeout(() => {
+                element.style.backgroundColor = '';
+            }, 2000);
+
+            searchResults.classList.remove('show');
+        });
     });
 }
 
