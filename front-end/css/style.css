@@ -66,7 +66,7 @@ header nav ul {
 
 header nav ul li {
     display: inline-block;
-    padding: 0 40px;
+    padding: 0 15px;
 }
 
 .logo img {
@@ -151,7 +151,6 @@ section.topo-site {
     margin-top: 5px;
 }
 
-/* Lado Direito - Logo e História */
 .logo-historia-section {
     display: flex;
     flex-direction: column;
@@ -224,7 +223,6 @@ section.topo-site {
     margin-right: 8px;
 }
 
-/* Responsividade para seção topo */
 @media (max-width: 768px) {
     section.topo-site {
         padding: 40px 4%;
@@ -635,7 +633,7 @@ body.alto-contraste .opcao-acessibilidade:hover {
     border: 1px solid #6a6a6a;
     border-radius: 8px;
     padding: 10px 15px;
-    min-width: 300px;
+    min-width: 250px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -999,6 +997,17 @@ body.alto-contraste .localizacao-footer a:hover {
 }
 
 /* Para tablets */
+@media (max-width: 1200px) {
+    header nav ul li {
+        padding: 0 12px;
+        font-size: 14px;
+    }
+    
+    .search-box {
+        min-width: 200px;
+    }
+}
+
 @media (max-width: 1024px) {
     section.topo-site .flex,
     section.especialidades .flex {
@@ -1007,7 +1016,23 @@ body.alto-contraste .localizacao-footer a:hover {
     }
 
     header nav ul li {
-        padding: 0 20px;
+        padding: 0 8px;
+        font-size: 13px;
+    }
+    
+    .search-box {
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 900px) {
+    header nav ul li {
+        padding: 0 6px;
+        font-size: 12px;
+    }
+    
+    .search-box {
+        min-width: 150px;
     }
 }
 
@@ -1020,6 +1045,10 @@ body.alto-contraste .localizacao-footer a:hover {
 
     nav.menu-desktop {
         display: none;
+    }
+    
+    .search-box {
+        min-width: 100%;
     }
 
     /* Menu de acessibilidade responsivo */

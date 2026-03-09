@@ -1,0 +1,234 @@
+<section class="conquistas-section">
+    <div class="interface">
+        <h2 class="titulo">Conquistas e Competições<span>.</span></h2>
+        
+        <div class="conquistas-container">
+            <div class="conquistas-card">
+                <h3>Principais Conquistas (2017-2023)</h3>
+                <div class="conquistas-list">
+                    <div class="conquista-item">
+                        <i class="bi bi-trophy-fill"></i>
+                        <div class="conquista-info">
+                            <strong>2018</strong> - Campeão do Turno da Liga Catarinense
+                        </div>
+                    </div>
+                    <div class="conquista-item">
+                        <i class="bi bi-trophy-fill"></i>
+                        <div class="conquista-info">
+                            <strong>2018 e 2019</strong> - Vice-campeão Geral da Liga Catarinense
+                        </div>
+                    </div>
+                    <div class="conquista-item">
+                        <i class="bi bi-trophy-fill"></i>
+                        <div class="conquista-info">
+                            <strong>2019</strong> - Campeão da Copa Mariópolis
+                        </div>
+                    </div>
+                    <div class="conquista-item">
+                        <i class="bi bi-trophy-fill"></i>
+                        <div class="conquista-info">
+                            <strong>2020</strong> - Campeão Geral da Liga Catarinense de Futsal
+                        </div>
+                    </div>
+                    <div class="conquista-item">
+                        <i class="bi bi-trophy-fill"></i>
+                        <div class="conquista-info">
+                            <strong>2020</strong> - Campeão da Copa dos Campeões
+                        </div>
+                    </div>
+                    <div class="conquista-item">
+                        <i class="bi bi-trophy-fill"></i>
+                        <div class="conquista-info">
+                            <strong>2021</strong> - Bicampeão da Copa dos Campeões
+                        </div>
+                    </div>
+                    <div class="conquista-item">
+                        <i class="bi bi-trophy-fill"></i>
+                        <div class="conquista-info">
+                            <strong>2022</strong> - Campeão da Copa Catarinense
+                        </div>
+                    </div>
+                    <div class="conquista-item">
+                        <i class="bi bi-award-fill"></i>
+                        <div class="conquista-info">
+                            <strong>2022</strong> - 5º lugar nos JASC
+                        </div>
+                    </div>
+                    <div class="conquista-item">
+                        <i class="bi bi-award-fill"></i>
+                        <div class="conquista-info">
+                            <strong>2023</strong> - 5º lugar na Primeira Divisão
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="competicoes-card">
+                <h3>Competições Anuais</h3>
+                <p class="intro-competicoes">A APEB participa regularmente das seguintes competições:</p>
+                <div class="competicoes-list">
+                    <div class="competicao-item">
+                        <i class="bi bi-calendar-event"></i>
+                        <span>Primeira Divisão Estadual da Federação Catarinense</span>
+                    </div>
+                    <div class="competicao-item">
+                        <i class="bi bi-calendar-event"></i>
+                        <span>Copa Santa Catarina da Federação Catarinense</span>
+                    </div>
+                    <div class="competicao-item">
+                        <i class="bi bi-calendar-event"></i>
+                        <span>Jogos Abertos de Santa Catarina (JASC) - Fases Micro, Regional e Estadual</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.conquistas-section {
+    padding: 80px 4%;
+    background: #000000;
+}
+
+.conquistas-section .titulo {
+    color: #fff;
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.conquistas-section .titulo span {
+    color: rgb(0, 158, 16);
+}
+
+.conquistas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.conquistas-card,
+.competicoes-card {
+    background: #171717;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border-left: 5px solid rgb(0, 158, 16);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.conquistas-card:hover,
+.competicoes-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 158, 16, 0.3);
+}
+
+.conquistas-card h3,
+.competicoes-card h3 {
+    color: rgb(0, 158, 16);
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.conquistas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.conquista-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #0d0d0d;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.conquista-item:hover {
+    background: rgba(0, 158, 16, 0.1);
+}
+
+.conquista-item i {
+    font-size: 24px;
+    color: rgb(0, 158, 16);
+}
+
+.conquista-info {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+}
+
+.conquista-info strong {
+    color: rgb(0, 158, 16);
+}
+
+.intro-competicoes {
+    color: #b0b0b0;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.competicoes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.competicao-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: #0d0d0d;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.competicao-item:hover {
+    background: rgba(0, 158, 16, 0.1);
+}
+
+.competicao-item i {
+    font-size: 28px;
+    color: rgb(0, 158, 16);
+    min-width: 28px;
+}
+
+.competicao-item span {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+}
+
+@media screen and (max-width: 968px) {
+    .conquistas-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .conquistas-section .titulo {
+        font-size: 28px;
+    }
+
+    .conquistas-card h3,
+    .competicoes-card h3 {
+        font-size: 20px;
+    }
+
+    .conquista-item,
+    .competicao-item {
+        padding: 12px;
+    }
+}
+</style>

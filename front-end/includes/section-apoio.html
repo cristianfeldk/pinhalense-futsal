@@ -1,0 +1,275 @@
+<section class="apoio-section">
+    <div class="interface">
+        <h2 class="titulo">Por que Apoiar a Pinhalense Futsal<span>?</span></h2>
+        
+        <div class="apoio-intro">
+            <p>São mais de <strong>26 anos</strong> atuando com o futsal na sociedade pinhalense, crescendo e evoluindo junto com o município.</p>
+        </div>
+
+        <div class="missao-container">
+            <div class="missao-card">
+                <i class="bi bi-bullseye"></i>
+                <h3>Nossa Missão</h3>
+                <p>Manter e desenvolver uma equipe adulta de alto rendimento, oferecendo condições adequadas de treinamento e participação em competições, representando Pinhalzinho/SC em nível regional e estadual.</p>
+            </div>
+            <div class="missao-card">
+                <i class="bi bi-people-fill"></i>
+                <h3>Nosso Compromisso</h3>
+                <p>Incentivar e fortalecer a prática esportiva entre crianças e jovens, promovendo valores como disciplina, trabalho em equipe e saúde através do esporte.</p>
+            </div>
+        </div>
+
+        <div class="divulgacao-container">
+            <h3 class="subtitulo">Divulgamos a Sua Marca</h3>
+            
+            <div class="canais-grid">
+                <div class="canal-card">
+                    <i class="bi bi-newspaper"></i>
+                    <h4>Jornais</h4>
+                    <ul>
+                        <li>A Sua Voz – Pinhalzinho/SC</li>
+                        <li>Imprensa do Povo – Pinhalzinho/SC</li>
+                    </ul>
+                </div>
+
+                <div class="canal-card">
+                    <i class="bi bi-broadcast-pin"></i>
+                    <h4>Rádios</h4>
+                    <ul>
+                        <li>Rádio Centro Oeste – 100.9 FM</li>
+                        <li>Rádio Nova – 103.1 FM</li>
+                    </ul>
+                </div>
+
+                <div class="canal-card">
+                    <i class="bi bi-phone"></i>
+                    <h4>Mídias Digitais</h4>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Instagram</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="exposicao-container">
+            <h3 class="subtitulo">Exposição da Sua Marca</h3>
+            
+            <div class="exposicao-grid">
+                <div class="exposicao-card">
+                    <i class="bi bi-shirt"></i>
+                    <h4>Uniformes</h4>
+                    <ul>
+                        <li>Camisa de jogo</li>
+                        <li>Calção de jogo</li>
+                    </ul>
+                </div>
+
+                <div class="exposicao-card">
+                    <i class="bi bi-badge-ad"></i>
+                    <h4>Durante os Jogos</h4>
+                    <ul>
+                        <li>Banner com patrocinadores no local das partidas</li>
+                        <li>Menções aos patrocinadores na narração</li>
+                        <li>Divulgação nos intervalos das partidas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.apoio-section {
+    padding: 80px 4%;
+    background: #000000;
+}
+
+.apoio-section .titulo {
+    color: #fff;
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.apoio-section .titulo span {
+    color: rgb(0, 158, 16);
+}
+
+.apoio-intro {
+    max-width: 900px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.apoio-intro p {
+    color: #e0e0e0;
+    font-size: 20px;
+    line-height: 1.8;
+    font-family: 'Poppins', sans-serif;
+}
+
+.apoio-intro strong {
+    color: rgb(0, 158, 16);
+    font-weight: 700;
+}
+
+.missao-container {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.missao-card {
+    background: #171717;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border-top: 5px solid rgb(0, 158, 16);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.missao-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 158, 16, 0.3);
+}
+
+.missao-card i {
+    font-size: 48px;
+    color: rgb(0, 158, 16);
+    margin-bottom: 20px;
+}
+
+.missao-card h3 {
+    color: rgb(0, 158, 16);
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.missao-card p {
+    color: #b0b0b0;
+    line-height: 1.8;
+    font-family: 'Poppins', sans-serif;
+}
+
+.divulgacao-container,
+.exposicao-container {
+    max-width: 1200px;
+    margin: 60px auto;
+}
+
+.subtitulo {
+    color: #fff;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.subtitulo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: rgb(0, 158, 16);
+}
+
+.canais-grid,
+.exposicao-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.exposicao-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.canal-card,
+.exposicao-card {
+    background: #171717;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.canal-card:hover,
+.exposicao-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 158, 16, 0.3);
+}
+
+.canal-card i,
+.exposicao-card i {
+    font-size: 40px;
+    color: rgb(0, 158, 16);
+    margin-bottom: 15px;
+}
+
+.canal-card h4,
+.exposicao-card h4 {
+    color: rgb(0, 158, 16);
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.canal-card ul,
+.exposicao-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.canal-card li,
+.exposicao-card li {
+    color: #b0b0b0;
+    padding: 8px 0;
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.canal-card li:last-child,
+.exposicao-card li:last-child {
+    border-bottom: none;
+}
+
+@media screen and (max-width: 968px) {
+    .missao-container {
+        grid-template-columns: 1fr;
+    }
+
+    .canais-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .exposicao-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .apoio-section .titulo {
+        font-size: 28px;
+    }
+
+    .apoio-intro p {
+        font-size: 16px;
+    }
+
+    .subtitulo {
+        font-size: 24px;
+    }
+}
+</style>
