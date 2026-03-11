@@ -107,6 +107,10 @@ header nav ul li {
     padding: 0 15px;
 }
 
+.menu-desktop {
+    display: block;
+}
+
 .logo img {
     width: 100px;
 }

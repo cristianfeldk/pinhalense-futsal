@@ -7,7 +7,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # Redirecionar rotas da SPA para index.html
-RewriteRule ^(conquistas|galeria|apresentacao|apoio|faq)$ index.html [L]
+RewriteRule ^(conquistas|galeria|faq)$ index.html [L]
 
 # Redirecionar www para não-www (opcional)
 # RewriteCond %{HTTP_HOST} ^www\.futsalpinhalense\.com\.br [NC]

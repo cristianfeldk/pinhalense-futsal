@@ -17,10 +17,6 @@ function loadHTML(id, file) {
             if (file === 'section-faq.html') {
                 setTimeout(initFAQ, 50); 
             }
-            
-            if (file === 'section-apresentacao.html') {
-                setTimeout(initPDFViewer, 100);
-            }
         })
         .catch(err => {
             console.error(`Erro ao carregar ${file}:`, err);
@@ -48,7 +44,6 @@ const routes = {
     '/': { section: 'topo', title: 'APEB - Pinhalense Futsal' },
     '/conquistas': { section: 'conquistas', title: 'Conquistas - APEB' },
     '/galeria': { section: 'galeria', title: 'Galeria - APEB' },
-    '/apresentacao': { section: 'apresentacao', title: 'Apresentação - APEB' },
     '/faq': { section: 'faq', title: 'FAQ - APEB' },
 };
 
@@ -270,187 +265,6 @@ function displayResults(results, query) {
             searchResults.classList.remove('show');
         });
     });
-}
-
-function initPDFViewer() {
-    console.log('=== Iniciando PDF Viewer ===');
-    
-    if (typeof window.pdfjsLib === 'undefined') {
-        console.log('PDF.js não carregado, aguardando...');
-        setTimeout(initPDFViewer, 500);
-        return;
-    }
-    
-    console.log('PDF.js encontrado!');
-    
-    window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-    const canvas = document.getElementById('pdfCanvas');
-    const loadingSpinner = document.getElementById('loadingSpinner');
-    const currentPageSpan = document.getElementById('currentPage');
-    const totalPagesSpan = document.getElementById('totalPages');
-    const prevButton = document.getElementById('prevPage');
-    const nextButton = document.getElementById('nextPage');
-    const zoomInButton = document.getElementById('zoomIn');
-    const zoomOutButton = document.getElementById('zoomOut');
-    const resetZoomButton = document.getElementById('resetZoom');
-
-    if (!canvas || !loadingSpinner || !currentPageSpan || !totalPagesSpan || 
-        !prevButton || !nextButton || !zoomInButton || !zoomOutButton || !resetZoomButton) {
-        console.log('Elementos DOM não encontrados, aguardando...');
-        setTimeout(initPDFViewer, 500);
-        return;
-    }
-
-    console.log('Todos os elementos DOM encontrados!');
-    const ctx = canvas.getContext('2d');
-
-    let pdfDoc = null;
-    let currentPage = 1;
-    let totalPages = 0;
-    let currentScale = 0.5;
-    let isRendering = false;
-
-    const pdfPaths = [
-        './assets/apresentacao-pinhalense-futsal.pdf',
-        'assets/apresentacao-pinhalense-futsal.pdf',
-        '/assets/apresentacao-pinhalense-futsal.pdf'
-    ];
-    
-    let pdfUrl = pdfPaths[0];
-
-    async function loadPDF() {
-        let lastError = null;
-        
-        for (let i = 0; i < pdfPaths.length; i++) {
-            try {
-                pdfUrl = pdfPaths[i];
-                console.log(`Tentativa ${i + 1}: Carregando PDF de:`, pdfUrl);
-                
-                const loadingTask = window.pdfjsLib.getDocument({
-                    url: pdfUrl,
-                    cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
-                    cMapPacked: true,
-                });
-                
-                pdfDoc = await loadingTask.promise;
-                totalPages = pdfDoc.numPages;
-                totalPagesSpan.textContent = totalPages;
-                console.log('PDF carregado com sucesso de:', pdfUrl);
-                console.log('Total de páginas:', totalPages);
-                await renderPage(currentPage);
-                return;
-                
-            } catch (error) {
-                console.warn(`Falha na tentativa ${i + 1}:`, error.message);
-                lastError = error;
-                continue; 
-            }
-        }
-        
-        console.error('Não foi possível carregar o PDF de nenhum caminho');
-        console.error('Último erro:', lastError);
-        loadingSpinner.innerHTML = `
-            <i class="bi bi-exclamation-triangle"></i>
-            <p style="color: #ff6b6b; margin-top: 10px;">Arquivo PDF não encontrado no servidor.</p>
-            <p style="color: #888; font-size: 14px; margin-top: 5px;">Verifique se o arquivo foi enviado para a pasta "assets".</p>
-        `;
-    }
-
-    async function renderPage(pageNum) {
-        if (isRendering || !pdfDoc) return;
-        
-        isRendering = true;
-        loadingSpinner.classList.remove('hidden');
-        
-        try {
-            console.log('Renderizando página', pageNum);
-            const page = await pdfDoc.getPage(pageNum);
-            const viewport = page.getViewport({ scale: currentScale });
-            
-            const outputScale = window.devicePixelRatio || 1;
-            canvas.width = Math.floor(viewport.width * outputScale);
-            canvas.height = Math.floor(viewport.height * outputScale);
-            canvas.style.width = Math.floor(viewport.width) + 'px';
-            canvas.style.height = Math.floor(viewport.height) + 'px';
-            
-            const transform = outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null;
-            
-            const renderContext = {
-                canvasContext: ctx,
-                transform: transform,
-                viewport: viewport
-            };
-            
-            await page.render(renderContext).promise;
-            
-            currentPageSpan.textContent = pageNum;
-            updateButtons();
-            console.log('✅ Página', pageNum, 'renderizada com sucesso');
-            
-        } catch (error) {
-            console.error('❌ Erro ao renderizar página:', error);
-        } finally {
-            loadingSpinner.classList.add('hidden');
-            isRendering = false;
-        }
-    }
-
-    function updateButtons() {
-        prevButton.disabled = currentPage <= 1;
-        nextButton.disabled = currentPage >= totalPages;
-    }
-
-    prevButton.addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage--;
-            renderPage(currentPage);
-        }
-    });
-
-    nextButton.addEventListener('click', () => {
-        if (currentPage < totalPages) {
-            currentPage++;
-            renderPage(currentPage);
-        }
-    });
-
-    zoomInButton.addEventListener('click', () => {
-        currentScale += 0.25;
-        renderPage(currentPage);
-    });
-
-    zoomOutButton.addEventListener('click', () => {
-        if (currentScale > 0.5) {
-            currentScale -= 0.25;
-            renderPage(currentPage);
-        }
-    });
-
-    resetZoomButton.addEventListener('click', () => {
-        currentScale = 0.6;
-        renderPage(currentPage);
-    });
-
-    document.addEventListener('keydown', (e) => {
-        const section = document.querySelector('.apresentacao-section');
-        if (!section) return;
-        
-        const rect = section.getBoundingClientRect();
-        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-        
-        if (!isInView) return;
-        
-        if (e.key === 'ArrowLeft' && currentPage > 1) {
-            currentPage--;
-            renderPage(currentPage);
-        } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
-            currentPage++;
-            renderPage(currentPage);
-        }
-    });
-
-    loadPDF();
 }
 
 document.addEventListener('DOMContentLoaded', initPage);
