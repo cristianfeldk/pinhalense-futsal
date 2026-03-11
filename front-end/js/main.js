@@ -44,13 +44,11 @@ function initFAQ() {
     }
 }
 
-// Sistema de roteamento com History API
 const routes = {
     '/': { section: 'topo', title: 'APEB - Pinhalense Futsal' },
     '/conquistas': { section: 'conquistas', title: 'Conquistas - APEB' },
     '/galeria': { section: 'galeria', title: 'Galeria - APEB' },
     '/apresentacao': { section: 'apresentacao', title: 'Apresentação - APEB' },
-    '/apoio': { section: 'como-apoiar', title: 'Como Apoiar - APEB' },
     '/faq': { section: 'faq', title: 'FAQ - APEB' },
 };
 
@@ -81,7 +79,6 @@ function initRouter() {
             return;
         }
         
-        // Permitir navegação por âncoras internas (#horario, etc)
         const hashLink = e.target.closest('a[href^="#"]');
         if (hashLink) {
             e.preventDefault();
@@ -114,9 +111,6 @@ function initPage() {
     loadHTML('topo', 'section-topo.html');
     loadHTML('conquistas', 'section-conquistas.html');
     loadHTML('galeria', 'section-evento.html');
-    loadHTML('apresentacao', 'section-apresentacao.html');
-    loadHTML('apoio', 'section-apoio.html');
-    loadHTML('como-apoiar', 'section-como-apoiar.html');
     loadHTML('faq', 'section-faq.html');
     loadHTML('horario', 'section-horarios.html');
     loadHTML('footer', 'footer.html');
