@@ -66,14 +66,6 @@ function navigate(path, addToHistory = true) {
 
 function initRouter() {
     document.addEventListener('click', (e) => {
-        const link = e.target.closest('a[href^="/"]');
-        if (link) {
-            e.preventDefault();
-            const path = link.getAttribute('href');
-            navigate(path);
-            return;
-        }
-        
         const hashLink = e.target.closest('a[href^="#"]');
         if (hashLink) {
             e.preventDefault();
@@ -82,6 +74,15 @@ function initRouter() {
             if (targetElement) {
                 targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+            return;
+        }
+        
+        const link = e.target.closest('a[href^="/"]');
+        if (link && !link.getAttribute('href').includes('transparencia')) {
+            e.preventDefault();
+            const path = link.getAttribute('href');
+            navigate(path);
+            return;
         }
     });
     
@@ -174,7 +175,7 @@ function performSearch(query) {
     const searchResults = document.getElementById('search-results');
     const results = [];
     
-    const searchableElements = document.querySelectorAll('h1, h2, h3, h4, p, li, span, a');
+    const searchableElements = document.querySelectorAll('h1, h2, h3, h4, p, li, span, a, .btn-download');
     const queryLower = query.toLowerCase();
 
     searchableElements.forEach(element => {
@@ -206,10 +207,27 @@ function performSearch(query) {
                 element: element,
                 section: section,
                 snippet: snippet,
-                text: text.trim()
+                text: text.trim(),
+                isCurrentPage: true
             });
         }
     });
+
+    if (typeof searchInIndex === 'function') {
+        const indexResults = searchInIndex(query);
+        indexResults.forEach(indexResult => {
+            if (!indexResult.isCurrentPage) {
+                results.push({
+                    element: null,
+                    section: indexResult.section,
+                    snippet: `Encontrado em: ${indexResult.section}`,
+                    text: indexResult.section,
+                    isCurrentPage: false,
+                    targetPage: indexResult.page
+                });
+            }
+        });
+    }
 
     displayResults(results, query);
 }
@@ -241,26 +259,34 @@ function displayResults(results, query) {
 
     const limitedResults = uniqueResults.slice(0, 10);
 
-    searchResults.innerHTML = limitedResults.map(result => `
-        <div class="search-result-item" data-element-id="${result.element.id || ''}">
-            <div class="search-result-title">${result.section}</div>
-            <div class="search-result-text">${result.snippet}</div>
-        </div>
-    `).join('');
+    searchResults.innerHTML = limitedResults.map((result, index) => {
+        const pageIndicator = result.isCurrentPage ? '' : '<span class="other-page-badge"><i class="bi bi-box-arrow-up-right"></i> Outra página</span>';
+        return `
+            <div class="search-result-item" data-index="${index}" data-target-page="${result.targetPage || ''}">
+                <div class="search-result-title">${result.section} ${pageIndicator}</div>
+                <div class="search-result-text">${result.snippet}</div>
+            </div>
+        `;
+    }).join('');
 
     searchResults.classList.add('show');
 
     searchResults.querySelectorAll('.search-result-item').forEach((item, index) => {
         item.addEventListener('click', () => {
-            const element = limitedResults[index].element;
-            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const result = limitedResults[index];
             
-            element.style.transition = 'background-color 0.3s';
-            element.style.backgroundColor = 'rgba(0, 158, 16, 0.2)';
-            
-            setTimeout(() => {
-                element.style.backgroundColor = '';
-            }, 2000);
+            if (result.isCurrentPage && result.element) {
+                result.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                result.element.style.transition = 'background-color 0.3s';
+                result.element.style.backgroundColor = 'rgba(0, 158, 16, 0.2)';
+                
+                setTimeout(() => {
+                    result.element.style.backgroundColor = '';
+                }, 2000);
+            } else if (result.targetPage) {
+                window.location.href = './' + result.targetPage;
+            }
 
             searchResults.classList.remove('show');
         });

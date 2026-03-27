@@ -879,6 +879,27 @@ body.alto-contraste .opcao-acessibilidade:hover {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.other-page-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: rgba(0, 158, 16, 0.2);
+    color: rgb(0, 158, 16);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 158, 16, 0.3);
+}
+
+.other-page-badge i {
+    font-size: 10px;
 }
 
 .search-result-text {
@@ -901,11 +922,16 @@ body.alto-contraste .opcao-acessibilidade:hover {
     font-size: 14px;
 }
 
-/* Estilos para alto contraste na busca */
 body.alto-contraste .search-box,
 body.alto-contraste .search-results {
     background-color: #000 !important;
     border: 2px solid #fff !important;
+}
+
+body.alto-contraste .other-page-badge {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+    border-color: #fff !important;
 }
 
 body.alto-contraste .search-input {
